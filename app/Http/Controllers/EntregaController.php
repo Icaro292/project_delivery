@@ -22,7 +22,7 @@ class EntregaController extends Controller
         }
     }
 
-    public function criaEntregas(Request $request)
+    public function criarEntregas(Request $request)
     {
         try {
             $dados = $request->validate([

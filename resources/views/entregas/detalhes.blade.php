@@ -1,207 +1,100 @@
-<!DOCTYPE html>
+@extends('layouts.app')
 
-<html lang="pt-BR">
+@section('content')
+<main class="pt-20 max-w-2xl mx-auto px-5">
+    <a href="{{ route('home') }}" class="inline-flex items-center gap-1 text-sm font-bold text-blue-900 mb-4">
+        <span class="material-symbols-outlined text-[18px]">arrow_back</span>
+        Voltar
+    </a>
 
-<head>
-    <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport" />
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap"
-        rel="stylesheet" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
-        rel="stylesheet" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
-        rel="stylesheet" />
-    <script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    "colors": {
-                        "outline-variant": "#c5c5d3",
-                        "on-tertiary": "#ffffff",
-                        "on-primary-container": "#90a8ff",
-                        "error-container": "#ffdad6",
-                        "tertiary-fixed": "#ffdbcb",
-                        "primary-fixed-dim": "#b6c4ff",
-                        "inverse-on-surface": "#eaf1ff",
-                        "surface-variant": "#d3e4fe",
-                        "on-background": "#0b1c30",
-                        "surface-container-high": "#dce9ff",
-                        "on-primary-fixed": "#00164e",
-                        "surface-container-low": "#eff4ff",
-                        "on-secondary-container": "#007432",
-                        "surface-container-highest": "#d3e4fe",
-                        "on-primary": "#ffffff",
-                        "on-primary-fixed-variant": "#264191",
-                        "secondary-fixed-dim": "#4ae176",
-                        "error": "#ba1a1a",
-                        "secondary": "#006e2f",
-                        "surface": "#f8f9ff",
-                        "inverse-primary": "#b6c4ff",
-                        "surface-dim": "#cbdbf5",
-                        "primary": "#00236f",
-                        "secondary-fixed": "#6bff8f",
-                        "background": "#f8f9ff",
-                        "surface-bright": "#f8f9ff",
-                        "tertiary-container": "#6e2c00",
-                        "on-error-container": "#93000a",
-                        "on-secondary-fixed-variant": "#005321",
-                        "tertiary": "#4b1c00",
-                        "on-tertiary-fixed-variant": "#773205",
-                        "secondary-container": "#6bff8f",
-                        "surface-tint": "#4059aa",
-                        "surface-container-lowest": "#ffffff",
-                        "on-surface": "#0b1c30",
-                        "on-error": "#ffffff",
-                        "on-tertiary-container": "#f39461",
-                        "primary-fixed": "#dce1ff",
-                        "primary-container": "#1e3a8a",
-                        "inverse-surface": "#213145",
-                        "on-secondary-fixed": "#002109",
-                        "on-tertiary-fixed": "#341100",
-                        "tertiary-fixed-dim": "#ffb691",
-                        "on-secondary": "#ffffff",
-                        "on-surface-variant": "#444651"
-                    },
-                    "borderRadius": {
-                        "DEFAULT": "0.25rem",
-                        "lg": "0.5rem",
-                        "xl": "0.75rem",
-                        "full": "9999px"
-                    },
-                    "spacing": {
-                        "sm": "8px",
-                        "xl": "32px",
-                        "unit": "4px",
-                        "md": "16px",
-                        "gutter": "12px",
-                        "xs": "4px",
-                        "margin-mobile": "20px",
-                        "lg": "24px"
-                    },
-                    "fontFamily": {
-                        "h1": ["Inter"], "h3": ["Inter"], "body-lg": ["Inter"], "caption": ["Inter"], "body-md": ["Inter"], "h2": ["Inter"], "label-md": ["Inter"]
-                    },
-                    "fontSize": {
-                        "h1": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
-                        "h3": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
-                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
-                        "caption": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
-                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
-                        "h2": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
-                        "label-md": ["14px", { "lineHeight": "20px", "fontWeight": "600" }]
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-            display: inline-block;
-            vertical-align: middle;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-    </style>
-    <style>
-        body {
-            min-height: max(884px, 100dvh);
-        }
-    </style>
-</head>
-
-<body class="bg-background text-on-surface min-h-screen pb-24">
-    <!-- TopAppBar -->
-    <header
-        class="bg-slate-50 dark:bg-slate-950 flex justify-between items-center w-full px-5 py-3 h-16 fixed top-0 z-50 shadow-sm border-b border-slate-200 dark:border-slate-800">
-        <div class="flex items-center gap-3">
-            <button onclick="window.location.href='home.home'" class="active:scale-95 transition-transform duration-150 text-blue-900 dark:text-blue-400">
-                <span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
-            </button>
-            <h1
-                class="font-inter antialiased text-sm font-semibold tracking-tight text-blue-900 dark:text-blue-400 uppercase">
-                Detalhes da Entrega</h1>
+    <section class="bg-white border border-slate-200 rounded-lg shadow-sm p-5">
+        <div class="flex items-start justify-between gap-4">
+            <div>
+                <p class="text-xs font-bold text-slate-400 uppercase">Corrida</p>
+                <h1 class="text-2xl font-bold text-blue-900">#{{ $entrega->id }}</h1>
+            </div>
+            <span class="rounded-full px-3 py-1 text-xs font-bold uppercase {{ $entrega->status === 'cancelada' ? 'bg-red-100 text-red-700' : 'bg-blue-100 text-blue-800' }}">
+                {{ str_replace('_', ' ', $entrega->status) }}
+            </span>
         </div>
-        <div
-            class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center overflow-hidden border border-outline-variant">
-            <img alt="Foto de perfil do motorista" class="w-full h-full object-cover"
-                data-alt="Close-up portrait of a professional driver smiling, wearing a clean uniform, soft daylight background"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuA93yp_NlQTqP3lm6tCRLyq2K8mFuiGR8OMEPO-g_vsQyw-_h0MmvQ-XjhTb7gO7Wk5gKTsANGMu9XMK4MmGYygIG4lbgOaqlByClYCHKH6Qqaeh7FMqqDlUjeFeRmrDM7an62Hrzn9nsHc-G-BaoAAY50QrFogxpE0gS-JU5hiF-2ul4aquDgc5g_alB2C2KYyI93hxL82Pz2xztjATJHvDHVbx96UQCYdXT16Xxzr1qCSVxxntce0-UYXmcqJ_aodkoq39Fv2E6f" />
+
+        <div class="grid gap-4 sm:grid-cols-2 mt-6">
+            <div class="rounded-lg bg-slate-50 p-4">
+                <p class="text-xs font-bold text-slate-400 uppercase">Retirada</p>
+                <p class="font-semibold text-slate-800">{{ $entrega->origem }}</p>
+            </div>
+            <div class="rounded-lg bg-slate-50 p-4">
+                <p class="text-xs font-bold text-slate-400 uppercase">Entrega</p>
+                <p class="font-semibold text-slate-800">{{ $entrega->destino }}</p>
+            </div>
         </div>
-    </header>
-    <main class="pt-20 px-margin-mobile max-w-md mx-auto">
-        <!-- Company & Price Header -->
-        <section class="bg-surface-container-lowest rounded-xl p-md shadow-sm mb-md border border-surface-container">
-            <div class="flex justify-between items-start mb-sm">
-                <div>
-                    <p class="text-caption text-on-surface-variant uppercase tracking-wider mb-1">Empresa</p>
-                    <h2 class="font-h2 text-h2 text-primary">TechLog Soluções LTDA</h2>
+
+        <div class="grid gap-4 sm:grid-cols-3 mt-4">
+            <div>
+                <p class="text-xs font-bold text-slate-400 uppercase">Valor</p>
+                <p class="text-lg font-bold text-green-700">R$ {{ number_format((float) $entrega->valor, 2, ',', '.') }}</p>
+            </div>
+            <div>
+                <p class="text-xs font-bold text-slate-400 uppercase">Comércio</p>
+                <p class="font-semibold text-slate-800">{{ $entrega->comercio->name ?? '-' }}</p>
+            </div>
+            <div>
+                <p class="text-xs font-bold text-slate-400 uppercase">Motoqueiro</p>
+                <p class="font-semibold text-slate-800">{{ $entrega->motoqueiro->name ?? '-' }}</p>
+            </div>
+        </div>
+
+        @if ($entrega->observacoes)
+            <div class="mt-5 rounded-lg bg-yellow-50 border border-yellow-100 p-4">
+                <p class="text-xs font-bold text-yellow-700 uppercase">Observações</p>
+                <p class="text-sm text-yellow-900 mt-1">{{ $entrega->observacoes }}</p>
+            </div>
+        @endif
+
+        <div class="mt-5 rounded-lg border border-slate-200 p-4">
+            <p class="text-xs font-bold text-slate-400 uppercase mb-2">Aceites necessários</p>
+            <div class="grid gap-2 sm:grid-cols-2">
+                <div class="rounded-lg {{ $entrega->motoqueiro_aceitou_em ? 'bg-green-50 text-green-800' : 'bg-slate-50 text-slate-600' }} p-3 text-sm font-semibold">
+                    Motoqueiro: {{ $entrega->motoqueiro_aceitou_em ? 'aceitou' : 'pendente' }}
                 </div>
-                <div class="text-right">
-                    <p class="text-caption text-on-surface-variant uppercase tracking-wider mb-1">Valor</p>
-                    <p class="font-h2 text-h2 text-secondary">R$ 28,50</p>
+                <div class="rounded-lg {{ $entrega->comercio_aceitou_em ? 'bg-green-50 text-green-800' : 'bg-slate-50 text-slate-600' }} p-3 text-sm font-semibold">
+                    Comércio: {{ $entrega->comercio_aceitou_em ? 'aceitou' : 'pendente' }}
                 </div>
             </div>
-            <div class="flex gap-2">
-                <span
-                    class="bg-surface-variant text-on-surface-variant text-[10px] font-bold px-2 py-0.5 rounded uppercase">Frágil</span>
-            </div>
-        </section>
-        <!-- Address Journey (Bento Style) -->
-        <section class="grid grid-cols-1 gap-md mb-md">
-            <div class="bg-white rounded-xl p-md border border-slate-100 shadow-sm relative overflow-hidden">
-                <div class="absolute left-0 top-0 bottom-0 w-1 bg-primary"></div>
-                <div class="flex items-start gap-md">
-                    <div class="flex flex-col items-center gap-1">
-                        <span class="material-symbols-outlined text-primary" data-icon="location_on">location_on</span>
-                        <div class="w-0.5 h-12 border-l-2 border-dashed border-slate-200"></div>
-                        <span class="material-symbols-outlined text-secondary"
-                            data-icon="local_shipping">local_shipping</span>
-                    </div>
-                    <div class="flex flex-col gap-xl">
-                        <!-- Retirada -->
-                        <div>
-                            <p class="text-caption font-bold text-primary uppercase mb-1">Retirada</p>
-                            <p class="font-label-md text-on-surface">Av. Paulista, 1000 - Bela Vista</p>
-                            <p class="text-caption text-on-surface-variant">São Paulo - SP, 01310-100</p>
-                        </div>
-                        <!-- Entrega -->
-                        <div>
-                            <p class="text-caption font-bold text-secondary uppercase mb-1">Entrega</p>
-                            <p class="font-label-md text-on-surface">Rua Oscar Freire, 450 - Jardins</p>
-                            <p class="text-caption text-on-surface-variant">São Paulo - SP, 01426-001</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- Observations -->
-        <section class="bg-tertiary-fixed rounded-xl p-md border border-tertiary-fixed-dim/20 mb-xl">
-            <div class="flex items-center gap-2 mb-2">
-                <span class="material-symbols-outlined text-tertiary" data-icon="notes">notes</span>
-                <p class="text-label-md text-tertiary uppercase tracking-tight">Observações</p>
-            </div>
-            <p class="font-body-md text-on-tertiary-fixed italic leading-relaxed">
-                "Levar troco para R$ 100,00. O cliente solicitou entrega no 4º andar, interfone 42."
-            </p>
-        </section>
-        <!-- Action Button -->
-        <div
-            class="fixed bottom-0 left-0 w-full p-margin-mobile bg-white/80 backdrop-blur-lg border-t border-slate-100 z-40">
-            <button
-                class="w-full h-14 bg-primary text-white rounded-xl font-bold text-body-lg flex items-center justify-center gap-3 shadow-lg active:scale-[0.98] transition-all">
-                <span class="material-symbols-outlined" data-icon="check_circle" data-weight="fill"
-                    style="font-variation-settings: 'FILL' 1;">check_circle</span>
-                ACEITAR ENTREGA
-            </button>
         </div>
-    </main>
-</body>
 
-</html>
+        <div class="mt-6 flex flex-wrap gap-3">
+            @if ((auth()->user()->isMotoqueiro() || auth()->user()->isAdmin()) && $entrega->status === 'disponivel')
+                <form method="POST" action="{{ route('entregas.aceitar', $entrega) }}">
+                    @csrf
+                    <button class="rounded-lg bg-blue-900 px-5 py-3 text-sm font-bold text-white">Aceitar como motoqueiro</button>
+                </form>
+            @endif
+
+            @if ((auth()->user()->isComercio() || auth()->user()->isAdmin()) && $entrega->status === 'aguardando_comercio')
+                <form method="POST" action="{{ route('entregas.aceitar-comercio', $entrega) }}">
+                    @csrf
+                    <button class="rounded-lg bg-blue-900 px-5 py-3 text-sm font-bold text-white">Aceitar motoqueiro</button>
+                </form>
+            @endif
+
+            @if ((auth()->user()->isAdmin() || $entrega->motoqueiro_id === auth()->id()) && in_array($entrega->status, ['aceita', 'em_andamento'], true))
+                <form method="POST" action="{{ route('entregas.concluir', $entrega) }}">
+                    @csrf
+                    <button class="rounded-lg bg-green-700 px-5 py-3 text-sm font-bold text-white">Concluir corrida</button>
+                </form>
+            @endif
+
+            @if ((auth()->user()->isComercio() || auth()->user()->isAdmin()) && !in_array($entrega->status, ['concluida', 'cancelada'], true))
+                <form method="POST" action="{{ route('entregas.excluir-ou-cancelar', $entrega) }}">
+                    @csrf
+                    @method('DELETE')
+                    <button class="rounded-lg bg-red-700 px-5 py-3 text-sm font-bold text-white">
+                        {{ $entrega->status === 'disponivel' && !$entrega->motoqueiro_id ? 'Excluir corrida' : 'Cancelar corrida' }}
+                    </button>
+                </form>
+            @endif
+        </div>
+    </section>
+</main>
+@endsection

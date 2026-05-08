@@ -10,13 +10,16 @@
             </h1>
         </div>
 
-        <div class="h-10 w-10 rounded-full overflow-hidden border-2 border-blue-900 shadow-sm">
-            <img 
-                src="{{ asset('images/motorista.jpg') }}" 
-                alt="Foto do motorista"
-                class="w-full h-full object-cover"
-                onerror="this.src='https://ui-avatars.com/api/?name=Motorista&background=1e3a8a&color=fff'"
-            >
+        <div class="flex items-center gap-3">
+            <div class="text-right hidden sm:block">
+                <p class="text-sm font-bold text-slate-800">{{ auth()->user()->name }}</p>
+                <p class="text-xs text-slate-500 capitalize">{{ auth()->user()->nivel_acesso }}</p>
+            </div>
+
+            <form method="POST" action="{{ route('logout') }}">
+                @csrf
+                <button class="rounded-lg border border-slate-300 px-3 py-2 text-xs font-bold text-slate-700">Sair</button>
+            </form>
         </div>
     </div>
 </header>
